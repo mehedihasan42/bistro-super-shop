@@ -5,10 +5,10 @@ const NavBar = () => {
   const navItem = (
     <>
       <li>
-        <Link>Item 1</Link>
+        <Link to='/'>Home</Link>
       </li>
       <li>
-        <Link>Item 2</Link>
+        <Link to='/menu'>Menu</Link>
       </li>
       <li>
         <Link>Item 3</Link>
