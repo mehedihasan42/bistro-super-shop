@@ -11,7 +11,7 @@ const NavBar = () => {
         <Link to='/menu'>Menu</Link>
       </li>
       <li>
-        <Link>Item 3</Link>
+        <Link to='/shop'>Shop</Link>
       </li>
     </>
   );
