@@ -7,6 +7,7 @@ import Home from '../Pages/Home/Home/Home';
 import Menu from '../Pages/Menu/Menu/Menu';
 import Shop from '../Pages/Components/Shop/Shop';
 import Login from '../Authentication/Login/Login';
+import SignUp from '../Authentication/SignUp/SignUp';
 
   const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ import Login from '../Authentication/Login/Login';
         {
           path:'/login',
           element:<Login></Login>
+        },
+        {
+          path:'/signUp',
+          element:<SignUp></SignUp>
         }
       ]
     },

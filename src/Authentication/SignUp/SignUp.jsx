@@ -1,16 +1,17 @@
-import React from "react";
+import React from 'react';
 
-const Login = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const from = event.target;
-    const email = from.email.value;
-    const password = from.password.value;
-    console.log(email, password);
-  };
+const SignUp = () => {
 
-  return (
-    <div className="hero min-h-screen bg-base-200">
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const from = event.target;
+        const email = from.email.value;
+        const password = from.password.value;
+        console.log(email, password);
+      };
+
+    return (
+        <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col">
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleSubmit}>
@@ -51,7 +52,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default Login;
+export default SignUp;
