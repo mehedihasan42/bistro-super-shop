@@ -5,9 +5,11 @@ import manuImg from "../../../assets/menu/menu-bg.jpg";
 import Items from "../../Shared/Items/Items";
 import items1 from "../../../assets/menu/pizza-bg.jpg";
 import useMenu from "../../../hooks/useMenu";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [menu] = useMenu();
+  const {name}= menu
 
   const offers = menu.filter((item) => item.category === "offered");
   const dessert = menu.filter((item) => item.category === "dessert");
@@ -52,6 +54,7 @@ const Menu = () => {
             price={offer.price}
           ></Items>
         ))}
+         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
       </div>
       <Covor
         img={manuImg}
@@ -67,6 +70,7 @@ const Menu = () => {
             price={offer.price}
           ></Items>
         ))}
+         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
       </div>
       <Covor
         img={manuImg}
@@ -82,6 +86,7 @@ const Menu = () => {
             price={offer.price}
           ></Items>
         ))}
+         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
       </div>
       <Covor
         img={manuImg}
@@ -97,6 +102,7 @@ const Menu = () => {
             price={offer.price}
           ></Items>
         ))}
+         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
       </div>
       <Covor
         img={manuImg}
@@ -112,6 +118,7 @@ const Menu = () => {
             price={offer.price}
           ></Items>
         ))}
+         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
       </div>
     </div>
   );
