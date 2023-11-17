@@ -7,6 +7,7 @@ import useMenu from '../../../hooks/useMenu';
 import ShopCard from '../ShopCard/ShopCard';
 import ShopTab from '../ShopCard/ShopTab';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Shop = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -22,6 +23,9 @@ const Shop = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>Bistro Boss | Shop</title>
+          </Helmet>
             <Covor img={orderImage} title='Our Shop' details='Would you like to try a dish?'></Covor>
             <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
       <TabList>

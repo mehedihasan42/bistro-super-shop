@@ -8,6 +8,7 @@ import Menu from '../Pages/Menu/Menu/Menu';
 import Shop from '../Pages/Components/Shop/Shop';
 import Login from '../Authentication/Login/Login';
 import SignUp from '../Authentication/SignUp/SignUp';
+import PrivetRoutes from './PrivetRoutes';
 
   const router = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ import SignUp from '../Authentication/SignUp/SignUp';
         },
         {
           path:'/shop/:category',
-          element:<Shop></Shop>
+          element:<PrivetRoutes><Shop></Shop></PrivetRoutes>
         },
         {
           path:'/login',
