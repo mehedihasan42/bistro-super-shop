@@ -11,17 +11,17 @@ const AuthProvider = ({children}) => {
     const [loader,setLoader] = useState(true)
 
     const signUp = (email,password) =>{
-        setLoader(false)
+        setLoader(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
     const logIn = (email,password) =>{
-        setLoader(false)
+        setLoader(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
     const logOut = () =>{
-        setLoader(false)
+        setLoader(true)
         return signOut(auth)
     }
 
@@ -44,9 +44,9 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthProvider value={authInfo}>
+        <AuthContext.Provider value={authInfo}>
             {children}
-        </AuthProvider>
+        </AuthContext.Provider>
     );
 };
 
