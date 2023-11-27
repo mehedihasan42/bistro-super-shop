@@ -1,33 +1,39 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import useShop from "../../../hooks/useShop";
 
 const NavBar = () => {
-
-  const {user,logOut} = useContext(AuthContext)
-  const handleLogout = () =>{
-    logOut()
-    .then(()=>{})
-  }
+  const [shop] = useShop()
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut().then(() => {});
+  };
 
   const navItem = (
     <>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to='/menu'>Menu</Link>
+        <Link to="/menu">Menu</Link>
       </li>
       <li>
-        <Link to='/shop/dessert'>Shop</Link>
+        <Link to="/shop/dessert">Shop</Link>
       </li>
-      {
-        user?<li>
-        <button onClick={handleLogout}>Log out</button>
-      </li>:<li>
-        <Link to='/login'>Login</Link>
-      </li>
-      }  
+      <Link to='/sideNavBar' className="btn">
+        Inbox
+        <div className="badge badge-secondary">+{shop.length}</div>
+      </Link>
+      {user ? (
+        <li>
+          <button onClick={handleLogout}>Log out</button>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
 

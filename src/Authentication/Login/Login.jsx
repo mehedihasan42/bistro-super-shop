@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
@@ -7,6 +7,9 @@ import { Helmet } from "react-helmet";
 const Login = () => {
 
   const {logIn} = useContext(AuthContext)
+  const navigate = useNavigate()
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const {
     register, handleSubmit,formState: { errors },} = useForm()
@@ -16,6 +19,7 @@ const Login = () => {
     .then(result=>{
       const user = result.user
       console.log(user)
+      navigate(from, { replace: true });
     })
   }
 

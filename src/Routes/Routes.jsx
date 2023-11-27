@@ -9,6 +9,8 @@ import Shop from '../Pages/Components/Shop/Shop';
 import Login from '../Authentication/Login/Login';
 import SignUp from '../Authentication/SignUp/SignUp';
 import PrivetRoutes from './PrivetRoutes';
+import SideNavBar from '../SideNavBar/SideNavBar/SideNavBar';
+import BuyNow from '../SideNavBar/BuyNow/BuyNow';
 
   const router = createBrowserRouter([
     {
@@ -25,7 +27,7 @@ import PrivetRoutes from './PrivetRoutes';
         },
         {
           path:'/shop/:category',
-          element:<PrivetRoutes><Shop></Shop></PrivetRoutes>
+          element:<Shop></Shop>
         },
         {
           path:'/login',
@@ -37,6 +39,16 @@ import PrivetRoutes from './PrivetRoutes';
         }
       ]
     },
+    {
+      path:'/sideNavBar',
+      element: <SideNavBar></SideNavBar>,
+      children:[
+        {
+          path:'buys',
+          element:<BuyNow></BuyNow>
+        }
+      ]
+    }
   ]);
 
   export default router;

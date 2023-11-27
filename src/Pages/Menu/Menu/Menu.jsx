@@ -6,6 +6,7 @@ import Items from "../../Shared/Items/Items";
 import items1 from "../../../assets/menu/pizza-bg.jpg";
 import useMenu from "../../../hooks/useMenu";
 import { Link } from "react-router-dom";
+import MenuCart from "./MenuCart";
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -40,86 +41,11 @@ const Menu = () => {
       <Helmet>
         <title>Bistro Shop | Menu</title>
       </Helmet>
-      <Covor
-        img={manuImg}
-        title="Our Menu"
-        details="We serve pure product for our cusomer."
-      ></Covor>
-      <div className="grid grid-cols-2">
-        {offers.map((offer) => (
-          <Items
-            image={offer.image}
-            heading={offer.name}
-            details={offer.recipe}
-            price={offer.price}
-          ></Items>
-        ))}
-         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
-      </div>
-      <Covor
-        img={manuImg}
-        title="Dessert"
-        details="We serve pure product for our cusomer."
-      ></Covor>
-      <div className="grid grid-cols-2">
-        {sortDessert.map((offer) => (
-          <Items
-            image={offer.image}
-            heading={offer.name}
-            details={offer.recipe}
-            price={offer.price}
-          ></Items>
-        ))}
-         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
-      </div>
-      <Covor
-        img={manuImg}
-        title="Salad"
-        details="We serve pure product for our cusomer."
-      ></Covor>
-      <div className="grid grid-cols-2">
-        {sliceSalad.map((offer) => (
-          <Items
-            image={offer.image}
-            heading={offer.name}
-            details={offer.recipe}
-            price={offer.price}
-          ></Items>
-        ))}
-         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
-      </div>
-      <Covor
-        img={manuImg}
-        title="Pizza"
-        details="We serve pure product for our cusomer."
-      ></Covor>
-      <div className="grid grid-cols-2">
-        {slicePizza.map((offer) => (
-          <Items
-            image={offer.image}
-            heading={offer.name}
-            details={offer.recipe}
-            price={offer.price}
-          ></Items>
-        ))}
-         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
-      </div>
-      <Covor
-        img={manuImg}
-        title="Soup"
-        details="We serve pure product for our cusomer."
-      ></Covor>
-      <div className="grid grid-cols-2">
-        {sliceSoup.map((offer) => (
-          <Items
-            image={offer.image}
-            heading={offer.name}
-            details={offer.recipe}
-            price={offer.price}
-          ></Items>
-        ))}
-         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
-      </div>
+      <MenuCart items={offers} img={manuImg} title={'Our Offer'}></MenuCart>
+      <MenuCart items={sortDessert} img={manuImg} title={'Our Offer'}></MenuCart>
+      <MenuCart items={sliceSalad} img={manuImg} title={'Our Offer'}></MenuCart>
+      <MenuCart items={slicePizza} img={manuImg} title={'Our Offer'}></MenuCart>
+      <MenuCart items={sliceSoup} img={manuImg} title={'Our Offer'}></MenuCart>
     </div>
   );
 };
