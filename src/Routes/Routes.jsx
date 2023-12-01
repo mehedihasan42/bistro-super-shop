@@ -11,6 +11,7 @@ import SignUp from '../Authentication/SignUp/SignUp';
 import PrivetRoutes from './PrivetRoutes';
 import SideNavBar from '../SideNavBar/SideNavBar/SideNavBar';
 import BuyNow from '../SideNavBar/BuyNow/BuyNow';
+import Users from '../components/Users/Users';
 
   const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ import BuyNow from '../SideNavBar/BuyNow/BuyNow';
         {
           path:'buys',
           element:<BuyNow></BuyNow>
+        },
+        {
+          path:'users',
+          element:<Users></Users>
         }
       ]
     }

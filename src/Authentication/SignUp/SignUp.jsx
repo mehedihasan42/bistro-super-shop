@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
+import GoogleLogin from "../GoogleLogin/GoogleLogin";
 
 const SignUp = () => {
   const { signUp,updateUser } = useContext(AuthContext);
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/";
 
   const {register,handleSubmit,formState: { errors },} = useForm();
 
@@ -16,7 +20,21 @@ const SignUp = () => {
       const user = result.user
       console.log(user)
       updateUser(data.name)
-      .then(()=>{})
+      .then(()=>{
+        const allUsers = {name:data.name,email:data.email}
+        fetch('http://localhost:5000/user',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(allUsers)
+        })
+        .then(res=>res.json())
+        .then(result=>{
+          console.log(result)
+          navigate(from,{replace:true})
+        })
+      })
       .catch(error=>console.error(error))
     })
   };
@@ -73,6 +91,7 @@ const SignUp = () => {
             </div>
           </form>
           <Link to="/login">Log In</Link>
+          <GoogleLogin></GoogleLogin>
         </div>
       </div>
     </div>

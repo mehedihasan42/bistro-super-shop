@@ -1,24 +1,55 @@
 import React from 'react';
 import useShop from '../../hooks/useShop';
-import BuyCard from './BuyCard';
+import { FaTrashAlt } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 const BuyNow = () => {
 
-    const [shop] = useShop()
+    const [shop,refetch] = useShop()
     const total = shop.reduce((sum,item)=>item.price + sum,0)
+    const handleDelete = item =>{
+      console.log(item._id)
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+        fetch(`http://localhost:5000/shop/${item._id}`,{
+          method:'DELETE'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          if(data.deletedCount>0){
+            refetch()
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+        })
+        }
+      });
+    }
 
     return (
        <>
        <div>
         <p className='italic'>Total Price: <span className='font-bold text-2xl'>${total}</span></p>
         <p className='italic'>Total Product: <span className='font-bold text-2xl'>{shop.length}</span></p>
+        <button className="btn btn-xs">Pay</button>
        </div>
        <div className="overflow-x-auto">
       <table className="table">
         {/* head */}
         <thead>
           <tr>
-            <th>index</th>
+            <th>#</th>
             <th></th>
             <th>Name</th>
             <th>Recipe</th>
@@ -51,10 +82,10 @@ const BuyNow = () => {
             <td>
               {item.recipe}
             </td>
-           <p>{item.price}</p>
-            <th>
-              <button className="btn btn-ghost btn-xs">Delete</button>
-            </th>
+           <td><p>{item.price}</p></td>
+            <td>
+              <button onClick={()=>handleDelete(item)} className="btn btn-ghost btn-xs"><FaTrashAlt className='text-xl'/></button>
+            </td>
           </tr>
             )
           }

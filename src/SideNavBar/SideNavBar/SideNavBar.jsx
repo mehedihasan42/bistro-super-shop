@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 const SideNavBar = () => {
+
+  const isAdmin = false;
+
     return (
         <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -14,8 +17,17 @@ const SideNavBar = () => {
           <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <li><Link to='buys'>Purches</Link></li>
+           {
+            isAdmin?<>
+                <li><Link to='buys'>Purches</Link></li>
+            <li><Link to='users'>All Users</Link></li>
             <li><a>Sidebar Item 2</a></li>
+            </>:
+            <>
+               <li><Link to='buys'>Purches</Link></li>
+            <li><a>Sidebar Item 2</a></li>
+            </>
+           }
           </ul>
         
         </div>
