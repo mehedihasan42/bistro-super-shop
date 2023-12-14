@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../../hooks/useAdmin';
 
 const SideNavBar = () => {
 
-  const isAdmin = false;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin()
+  console.log('this is a/an',isAdmin)
 
     return (
         <div className="drawer lg:drawer-open">
@@ -21,15 +24,16 @@ const SideNavBar = () => {
             isAdmin?<>
                 <li><Link to='buys'>Purches</Link></li>
             <li><Link to='users'>All Users</Link></li>
+            <li><Link to='/'>Home</Link></li>
             <li><a>Sidebar Item 2</a></li>
             </>:
             <>
                <li><Link to='buys'>Purches</Link></li>
+               <li><Link to='/'>Home</Link></li>
             <li><a>Sidebar Item 2</a></li>
             </>
            }
-          </ul>
-        
+          </ul>  
         </div>
       </div>
     );

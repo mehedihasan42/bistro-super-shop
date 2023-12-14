@@ -12,6 +12,7 @@ import PrivetRoutes from './PrivetRoutes';
 import SideNavBar from '../SideNavBar/SideNavBar/SideNavBar';
 import BuyNow from '../SideNavBar/BuyNow/BuyNow';
 import Users from '../components/Users/Users';
+import AdminRoutes from './AdminRoutes';
 
   const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ import Users from '../components/Users/Users';
     },
     {
       path:'/sideNavBar',
-      element: <SideNavBar></SideNavBar>,
+      element: <PrivetRoutes><SideNavBar></SideNavBar></PrivetRoutes>,
       children:[
         {
           path:'buys',
@@ -50,7 +51,7 @@ import Users from '../components/Users/Users';
         },
         {
           path:'users',
-          element:<Users></Users>
+          element:<AdminRoutes><Users></Users></AdminRoutes>
         }
       ]
     }
