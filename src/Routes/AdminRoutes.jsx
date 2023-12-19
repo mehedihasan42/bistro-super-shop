@@ -15,7 +15,7 @@ const AdminRoutes = ({children}) => {
          return children;
     }
 
-    return <Navigate to='/login'  />
+    return <Navigate to='/'></Navigate>
 };
 
 export default AdminRoutes;

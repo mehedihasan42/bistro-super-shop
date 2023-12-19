@@ -13,6 +13,7 @@ import SideNavBar from '../SideNavBar/SideNavBar/SideNavBar';
 import BuyNow from '../SideNavBar/BuyNow/BuyNow';
 import Users from '../components/Users/Users';
 import AdminRoutes from './AdminRoutes';
+import AddItem from '../Pages/Components/AddItem/AddItem';
 
   const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ import AdminRoutes from './AdminRoutes';
         {
           path:'buys',
           element:<BuyNow></BuyNow>
+        },
+        {
+          path:'addItem',
+          element:<AdminRoutes><AddItem></AddItem></AdminRoutes>
         },
         {
           path:'users',
