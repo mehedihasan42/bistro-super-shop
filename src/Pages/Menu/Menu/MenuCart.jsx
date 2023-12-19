@@ -22,7 +22,7 @@ const MenuCart = ({items,title,img}) => {
             price={item.price}
           ></Items>
         ))}
-         <Link to={`/shop/${name}`}><button className="btn btn-wide">Wide</button></Link>
+         <Link to={`/shop/${name}`}><button className="btn btn-wide">Book</button></Link>
       </div>
         </div>
     );

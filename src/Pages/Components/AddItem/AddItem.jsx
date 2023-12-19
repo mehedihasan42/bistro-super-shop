@@ -1,15 +1,17 @@
 import React from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../hooks/useAxiousSecure";
+import Swal from "sweetalert2";
 
 const image_token = import.meta.env.VITE_img_apiKey
 
 const AddItem = () => {
+  const axiosSecure = useAxiosSecure()
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
+    reset
   } = useForm();
   const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_token}`
 
@@ -28,10 +30,21 @@ const AddItem = () => {
         const {name,category,price,recipe} = data;
         const newItem = {name,category,price:parseFloat(price),recipe,image:imgURL}
         console.log(newItem)
+        axiosSecure.post('/menu',newItem)
+        .then(res=>{
+          console.log(res)
+          if(res.data.insertedId){
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              timer: 1500
+            });
+            reset()
+          }
+        })     
       })
-
-
-    console.log(data.image[0]);
   };
 
   return (
@@ -66,8 +79,9 @@ const AddItem = () => {
                   <option disabled>
                     category
                   </option>
-                  <option>Han Solo</option>
-                  <option>Greedo</option>
+                  <option>Salad</option>
+                  <option>Dessert</option>
+                  <option value='drinks'>Drinks</option>
                 </select>
               </div>
               <div className="form-control w-2/4">
