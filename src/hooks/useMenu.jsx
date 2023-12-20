@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "./useAxiousSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const useMenu = () => {
-  const [menu, setMenu] = useState([]);
-  const axiosSecure = useAxiosSecure()
 
-  useEffect(() => {
-    fetch("http://localhost:5000/menu")
-      .then(res => res.json())
-      .then((data) => {
-        setMenu(data);
-      });
-  }, []);
+  const { data:menu=[], refetch } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: async() =>{
+      const res = await fetch('http://localhost:5000/menu')
+      return res.json()
+    }
+  })
 
-  return [menu];
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/menu")
+  //     .then(res => res.json())
+  //     .then((data) => {
+  //       setMenu(data);
+  //     });
+  // }, []);
+
+  return [menu,refetch];
 };
 export default useMenu;

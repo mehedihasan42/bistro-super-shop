@@ -14,6 +14,7 @@ import BuyNow from '../SideNavBar/BuyNow/BuyNow';
 import Users from '../components/Users/Users';
 import AdminRoutes from './AdminRoutes';
 import AddItem from '../Pages/Components/AddItem/AddItem';
+import ManageItem from '../Pages/Components/ManageItem/ManageItem';
 
   const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ import AddItem from '../Pages/Components/AddItem/AddItem';
         {
           path:'users',
           element:<AdminRoutes><Users></Users></AdminRoutes>
+        },
+        {
+          path:'manageItem',
+          element:<AdminRoutes><ManageItem></ManageItem></AdminRoutes>
         }
       ]
     }
