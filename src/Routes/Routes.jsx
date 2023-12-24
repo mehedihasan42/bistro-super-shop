@@ -15,6 +15,7 @@ import Users from '../components/Users/Users';
 import AdminRoutes from './AdminRoutes';
 import AddItem from '../Pages/Components/AddItem/AddItem';
 import ManageItem from '../Pages/Components/ManageItem/ManageItem';
+import Payment from '../SideNavBar/Payment/Payment';
 
   const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ import ManageItem from '../Pages/Components/ManageItem/ManageItem';
         {
           path:'addItem',
           element:<AdminRoutes><AddItem></AddItem></AdminRoutes>
+        },
+        {
+          path:'payment',
+          element:<AdminRoutes><Payment></Payment></AdminRoutes>
         },
         {
           path:'users',
