@@ -11,6 +11,7 @@ const ManageItem = () => {
   const handleDeleteCart = (item) => {
     console.log(item)
     axiosSecure.delete(`/menu/${item._id}`)
+    .then(data=>console.log(data.data))
   };
   
   return (
