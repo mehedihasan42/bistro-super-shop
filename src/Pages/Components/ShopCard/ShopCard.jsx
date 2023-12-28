@@ -8,13 +8,13 @@ const ShopCard = ({item}) => {
 
   const {user} = useContext(AuthContext)
   const [,refetch] = useShop()
-  const {name,recipe,image,price} = item
+  const {_id,name,recipe,image,price} = item
   const navigate = useNavigate()
   const location = useLocation()
 
     const handleAddToCart = item =>{
       if(user){
-        const data = {name,recipe,image,price,email:user?.email}
+        const data = {menuId:_id,name,recipe,image,price,email:user?.email}
       console.log(item._id)
       fetch('http://localhost:5000/shop',{
         method:'POST',
