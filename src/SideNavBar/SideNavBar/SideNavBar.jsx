@@ -22,7 +22,7 @@ const SideNavBar = () => {
             {/* Sidebar content here */}
            {
             isAdmin?<>
-                <li><Link to='buys'>Purches</Link></li>
+            <li><Link to='admin'>Admin Home</Link></li>
             <li><Link to='users'>All Users</Link></li>
             <li><Link to='addItem'>Add Item</Link></li>
             <li><Link to='manageItem'>Manage Item</Link></li>
@@ -30,6 +30,7 @@ const SideNavBar = () => {
             <li><Link to='/'>Home</Link></li>
             </>:
             <>
+               <li><Link to='user'>User Home</Link></li>
                <li><Link to='buys'>Purches</Link></li>
                <li><Link to='/'>Home</Link></li>
             <li><a>Sidebar Item 2</a></li>

@@ -16,6 +16,8 @@ import AdminRoutes from './AdminRoutes';
 import AddItem from '../Pages/Components/AddItem/AddItem';
 import ManageItem from '../Pages/Components/ManageItem/ManageItem';
 import Payment from '../SideNavBar/Payment/Payment';
+import AdminHome from '../SideNavBar/AdminHome/AdminHome';
+import UserHome from '../SideNavBar/UserHome/UserHome';
 
   const router = createBrowserRouter([
     {
@@ -48,6 +50,14 @@ import Payment from '../SideNavBar/Payment/Payment';
       path:'/sideNavBar',
       element: <PrivetRoutes><SideNavBar></SideNavBar></PrivetRoutes>,
       children:[
+        {
+          path:'admin',
+          element:<AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+        },
+        {
+          path:'user',
+          element:<UserHome></UserHome>
+        },
         {
           path:'buys',
           element:<BuyNow></BuyNow>
