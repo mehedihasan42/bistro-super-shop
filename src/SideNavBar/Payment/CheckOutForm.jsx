@@ -4,7 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiousSecure";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
-import "./styles.css";
+// import "./styles.css";
 import useShop from "../../hooks/useShop";
 
 const CheckOutForm = ({ price }) => {
